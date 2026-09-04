@@ -138,7 +138,7 @@ mysqli_close($conn);
                     .then(data => {
                         console.log('Load Password Status Response:', data);
                         if (data.success) {
-                            document.querySelector('.add-password').textContent = data.passwords ? 'Remove password' : 'Add password';
+                            document.querySelector('.add-password').textContent = data.has_password ? 'Remove password' : 'Add password';
                         } else {
                             console.error('Error:', data.message);
                         }
