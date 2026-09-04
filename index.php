@@ -211,7 +211,9 @@ mysqli_close($conn);
             document.getElementById('update-identifier-form').addEventListener('submit', function (event) {
                 event.preventDefault();
                 var newIdentifier = document.getElementById('new-identifier-input').value.trim();
-                if (newIdentifier && newIdentifier !== currentIdentifier) {
+                if (!/^[A-Za-z0-9_-]{1,64}$/.test(newIdentifier)) {
+                    alert('Identifier may only contain letters, numbers, hyphens, and underscores (max 64 characters).');
+                } else if (newIdentifier !== currentIdentifier) {
                     updateIdentifier(currentIdentifier, newIdentifier);
                 } else {
                     console.error('Invalid input or same identifier.');
@@ -371,7 +373,8 @@ mysqli_close($conn);
                 <form id="update-identifier-form">
                     <div class="popover" id="popover-content">
                         <input type="text" id="new-identifier-input" class="form-control"
-                            placeholder="Enter new identifier">
+                            placeholder="Enter new identifier" pattern="[A-Za-z0-9_-]{1,64}" maxlength="64"
+                            title="Letters, numbers, hyphens, and underscores only">
                         <button type="submit" class="btn btn-primary mt-2">Save</button>
                     </div>
                     <button type="button" id="change-url-button" class="change-url btn btn-warning">Change Url</button>

@@ -5,6 +5,11 @@ header('Content-Type: application/json');
 $postData = file_get_contents('php://input');
 $data = json_decode($postData, true);
 
+function isValidIdentifier($identifier)
+{
+    return is_string($identifier) && preg_match('/^[A-Za-z0-9_-]{1,64}$/', $identifier) === 1;
+}
+
 function identifierExists($conn, $identifier)
 {
     $stmt = mysqli_prepare($conn, "SELECT 1 FROM notes WHERE identifier = ?");
@@ -48,6 +53,11 @@ if (isset($data['action'])) {
 
         if ($currentIdentifier === '') {
             echo json_encode(array("success" => false, "message" => "Current identifier is empty. Cannot update."));
+            exit;
+        }
+
+        if (!isValidIdentifier($newIdentifier)) {
+            echo json_encode(array("success" => false, "message" => "Identifier may only contain letters, numbers, hyphens, and underscores (max 64 characters)."));
             exit;
         }
 
@@ -114,6 +124,11 @@ if (isset($data['action'])) {
 
         if ($newIdentifier === '') {
             echo json_encode(array("success" => false, "message" => "New identifier cannot be empty."));
+            exit;
+        }
+
+        if (!isValidIdentifier($newIdentifier)) {
+            echo json_encode(array("success" => false, "message" => "Identifier may only contain letters, numbers, hyphens, and underscores (max 64 characters)."));
             exit;
         }
 
