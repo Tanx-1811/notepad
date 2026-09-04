@@ -38,300 +38,26 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Rio Notes</title>
     <meta name="description" content="A simple and efficient online notepad application.">
     <meta name="keywords" content="rionotes, online notes, note-taking">
     <meta name="author" content="Jet-Tan">
 
-
-=======
-    <title>Notepad</title>
-    <meta name="description" content="A simple and efficient online notepad application.">
-    <meta name="keywords" content="notepad, online notes, note-taking">
-    <meta name="author" content="Jet-Tan">
-
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
     <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-
-    <style>
-<<<<<<< HEAD
-        body {
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
-=======
-    body {
-        background-color: #f4f4f4;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
-
-    .container {
-        max-width: 95%;
-        margin: 50px auto;
-        padding: 20px;
-        background: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-    }
-
-    h3 {
-        color: #333;
-        font-weight: 900;
-        text-align: center;
-    }
-
-    .new-note,
-    .share-url {
-        display: inline-block;
-        margin-bottom: 20px;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .new-note:hover,
-    .share-url:hover {
-        background-color: #0056b3;
-    }
-
-    .text-main {
-        position: relative;
-        margin-top: 20px;
-    }
-
-    textarea {
-        width: 100%;
-        padding: 20px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        font-size: 15px;
-        font-family: Arial, Helvetica, sans-serif;
-        resize: none;
-        height: 500px;
-    }
-
-    textarea:focus {
-        outline: none;
-        border-color: #007bff;
-    }
-
-    .change-url,
-    .add-password {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #ffc107;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        outline: none;
-    }
-
-    .change-url:hover,
-    .add-password:hover {
-        background-color: #e0a800;
-    }
-
-    .status-icon {
-        position: absolute;
-        top: 10px;
-        right: 30px;
-    }
-
-    .success-icon {
-        color: #28a745;
-        height: 10px;
-        width: 10px;
-    }
-
-    .failure-icon {
-        color: #dc3545;
-    }
-
-    @media (max-width: 768px) {
-        .container {
-            padding: 10px;
-            margin: 20px auto;
-            height: auto;
-        }
-
-        .new-note,
-        .share-url {
-<<<<<<< HEAD
-            display: inline-block;
-            margin-bottom: 10px;
-            padding: 0 15px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .new-note:hover,
-        .share-url:hover {
-            background-color: #0056b3;
-=======
-            margin-bottom: 10px;
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
-        }
-
-        .text-main {
-            margin-top: 10px;
-        }
-    }
-
-<<<<<<< HEAD
-        textarea {
-            width: 100%;
-            padding: 20px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            font-size: 15px;
-            font-family: Arial, Helvetica, sans-serif;
-            /* resize: both; */
-            height: 60vh;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #007bff;
-        }
-
-        .change-url,
-        .add-password {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 0 15px;
-            background-color: #ffc107;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        .change-url:hover,
-        .add-password:hover {
-            background-color: #e0a800;
-        }
-
-        .status-icon {
-            position: absolute;
-            top: 10px;
-            right: 30px;
-        }
-
-        .success-icon {
-            color: #28a745;
-            height: 10px;
-            width: 10px;
-        }
-
-        .failure-icon {
-            color: #dc3545;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-                margin: 20px auto;
-            }
-
-            .new-note,
-            .share-url {
-                margin-bottom: 10px;
-            }
-
-            .text-main {
-                margin-top: 10px;
-            }
-        }
-
-        .popover {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            border: 1px solid #ccc;
-            padding: 10px;
-            z-index: 1;
-        }
-=======
-    .popover {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        border: 1px solid #ccc;
-        padding: 10px;
-        z-index: 1;
-    }
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-<<<<<<< HEAD
-        document.addEventListener("DOMContentLoaded", function() {
-            // Function to generate a random identifier
+        document.addEventListener("DOMContentLoaded", function () {
             function generateRandomIdentifier() {
                 return Math.random().toString(36).substring(2, 10);
             }
 
-            // Function to update the identifier in the database and UI
             function updateIdentifier(currentIdentifier, newIdentifier) {
                 fetch('connect.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            action: 'change_url',
-                            identifier: currentIdentifier,
-                            newIdentifier: newIdentifier
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Server Response:', data);
-                        if (data.success) {
-                            var updatedIdentifier = newIdentifier || currentIdentifier;
-                            document.getElementById("edit-url").textContent = window.location.origin + '/' + updatedIdentifier;
-                            history.pushState({}, '', window.location.origin + '/' + updatedIdentifier);
-                            currentIdentifier = updatedIdentifier;
-                            window.location.reload();
-                            showStatusIcon(true);
-                        } else {
-                            console.error('Error:', data.message);
-                            if (data.message === "New identifier already exists.") {
-                                alert('The new identifier already exists. Please choose a different one.');
-                            }
-                            showStatusIcon(false);
-=======
-    document.addEventListener("DOMContentLoaded", function() {
-        function generateRandomIdentifier() {
-            return Math.random().toString(36).substring(2, 10);
-        }
-
-        function updateIdentifier(currentIdentifier, newIdentifier) {
-            fetch('connect.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -342,66 +68,38 @@ mysqli_close($conn);
                         newIdentifier: newIdentifier
                     })
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Server Response:', data);
-                    if (data.success) {
-                        var updatedIdentifier = newIdentifier || currentIdentifier;
-                        document.getElementById("edit-url").textContent = window.location.origin +
-                            '/notepad/' + updatedIdentifier;
-                        history.pushState({}, '', window.location.origin + '/notepad/' + updatedIdentifier);
-                        currentIdentifier = updatedIdentifier;
-                        window.location.reload();
-                        showStatusIcon(true);
-                    } else {
-                        console.error('Error:', data.message);
-                        if (data.message === "New identifier already exists.") {
-                            alert('The new identifier already exists. Please choose a different one.');
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Server Response:', data);
+                        if (data.success) {
+                            var updatedIdentifier = newIdentifier || currentIdentifier;
+                            history.pushState({}, '', window.location.origin + '/' + updatedIdentifier);
+                            window.location.reload();
+                        } else {
+                            console.error('Error:', data.message);
+                            if (data.message === "New identifier already exists.") {
+                                alert('The new identifier already exists. Please choose a different one.');
+                            }
+                            showStatusIcon(false);
                         }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
                         showStatusIcon(false);
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    showStatusIcon(false);
-                });
-        }
-
-        function showStatusIcon(success) {
-            var iconElement = document.getElementById('status-icon');
-            if (success) {
-                iconElement.innerHTML = '<i class="fas fa-check-circle success-icon"></i>';
-            } else {
-                iconElement.innerHTML = '<i class="fas fa-times-circle failure-icon" hidden></i>';
+                    });
             }
-        }
 
-<<<<<<< HEAD
-            // Function to show status icon indicating success or failure
             function showStatusIcon(success) {
                 var iconElement = document.getElementById('status-icon');
                 if (success) {
                     iconElement.innerHTML = '<i class="fas fa-check-circle success-icon"></i>';
                 } else {
-                    iconElement.innerHTML = '<i class="fas fa-times-circle failure-icon"> Please note content!</i>';
+                    iconElement.innerHTML = '<i class="fas fa-times-circle failure-icon" title="Failed to save"></i>';
                 }
             }
 
-            // Function to load content from the database
             function loadContent(identifier) {
                 fetch('connect.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            action: 'load',
-                            identifier: identifier
-                        })
-=======
-        function loadContent(identifier) {
-            fetch('connect.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -409,24 +107,47 @@ mysqli_close($conn);
                     body: JSON.stringify({
                         action: 'load',
                         identifier: identifier
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
                     })
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Load Content Response:', data);
-                    if (data.success) {
-                        document.getElementById('contents').value = data.content;
-                    } else {
-                        console.error('Error:', data.message);
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        }
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Load Content Response:', data);
+                        if (data.success) {
+                            document.getElementById('contents').value = data.content;
+                        } else {
+                            console.error('Error:', data.message);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
 
-<<<<<<< HEAD
+            function checkPasswordStatus(identifier) {
+                fetch('connect.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: 'load',
+                        identifier: identifier
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Load Password Status Response:', data);
+                        if (data.success) {
+                            document.querySelector('.add-password').textContent = data.passwords ? 'Remove password' : 'Add password';
+                        } else {
+                            console.error('Error:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
             var initialIdentifier = generateRandomIdentifier();
             var currentIdentifier = window.location.pathname.split('/').pop();
             if (!currentIdentifier || currentIdentifier.length === 0) {
@@ -434,39 +155,14 @@ mysqli_close($conn);
                 window.history.replaceState({}, '', window.location.origin + '/' + initialIdentifier);
             }
             document.getElementById("edit-url").textContent = window.location.origin + '/' + currentIdentifier;
-=======
-        var initialIdentifier = generateRandomIdentifier();
-        var currentIdentifier = window.location.pathname.split('/').pop();
-        if (!currentIdentifier || currentIdentifier.length === 0) {
-            currentIdentifier = initialIdentifier;
-            window.history.replaceState({}, '', window.location.origin + '/notepad/' + initialIdentifier);
-        }
-        document.getElementById("edit-url").textContent = window.location.origin + '/notepad/' +
-            currentIdentifier;
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
 
-        loadContent(currentIdentifier);
+            loadContent(currentIdentifier);
+            checkPasswordStatus(currentIdentifier);
 
-<<<<<<< HEAD
-            // Event listener for blur event on textarea
             var textarea = document.getElementById('contents');
-            textarea.addEventListener('blur', function() {
+            textarea.addEventListener('blur', function () {
                 var content = textarea.value.trim();
                 fetch('connect.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            action: 'update',
-                            identifier: currentIdentifier,
-                            content: content
-                        })
-=======
-        var textarea = document.getElementById('contents');
-        textarea.addEventListener('blur', function() {
-            var content = textarea.value.trim();
-            fetch('connect.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -475,23 +171,23 @@ mysqli_close($conn);
                         action: 'update',
                         identifier: currentIdentifier,
                         content: content
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
                     })
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Server Response:', data);
-                    if (data.success) {
-                        showStatusIcon(true);
-                    } else {
-                        console.error('Error:', data.message);
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Server Response:', data);
+                        showStatusIcon(!!data.success);
+                        if (!data.success) {
+                            console.error('Error:', data.message);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
                         showStatusIcon(false);
-<<<<<<< HEAD
                     });
             });
 
-            // Event listener for form submission to update identifier
-            document.getElementById('update-identifier-form').addEventListener('submit', function(event) {
+            document.getElementById('update-identifier-form').addEventListener('submit', function (event) {
                 event.preventDefault();
                 var newIdentifier = document.getElementById('new-identifier-input').value.trim();
                 if (newIdentifier && newIdentifier !== currentIdentifier) {
@@ -501,28 +197,35 @@ mysqli_close($conn);
                 }
             });
 
-            // Toggle popover for changing URL
-            document.querySelector('.change-url').addEventListener('click', function() {
-                var popover = document.getElementById('popover-content');
+            var popover = document.getElementById('popover-content');
+            var changeUrlButton = document.getElementById('change-url-button');
+            changeUrlButton.addEventListener('click', function () {
+                var buttonRect = changeUrlButton.getBoundingClientRect();
+                popover.style.top = (buttonRect.bottom + window.scrollY) + 'px';
+                popover.style.left = buttonRect.left + 'px';
                 popover.style.display = (popover.style.display === 'block' ? 'none' : 'block');
             });
+            document.addEventListener('click', function (event) {
+                if (!popover.contains(event.target) && event.target !== changeUrlButton) {
+                    popover.style.display = 'none';
+                }
+            });
 
-            // Event listener for adding or removing password
-            document.querySelector('.add-password').addEventListener('click', function() {
+            document.querySelector('.add-password').addEventListener('click', function () {
                 if (this.textContent === 'Add password') {
                     var newPassword = prompt('Enter password:');
                     if (newPassword !== null) {
                         fetch('connect.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({
-                                    action: 'add_password',
-                                    identifier: currentIdentifier,
-                                    passwords: newPassword
-                                })
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                action: 'add_password',
+                                identifier: currentIdentifier,
+                                passwords: newPassword
                             })
+                        })
                             .then(response => response.json())
                             .then(data => {
                                 console.log('Add Password Response:', data);
@@ -538,122 +241,11 @@ mysqli_close($conn);
                                 console.error('Error:', error);
                                 alert('An error occurred while adding password.');
                             });
-=======
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
                     }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    showStatusIcon(false);
-                });
-        });
-
-<<<<<<< HEAD
-            // Function to check if password is set
-            function checkPasswordStatus(identifier) {
-                fetch('connect.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            action: 'load',
-                            identifier: identifier
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Load Password Status Response:', data);
-                        if (data.success) {
-                            if (data.passwords) {
-                                document.querySelector('.add-password').textContent = 'Remove password';
-                            } else {
-                                document.querySelector('.add-password').textContent = 'Add password';
-                            }
-                        } else {
-                            console.error('Error:', data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            }
-
-            checkPasswordStatus(currentIdentifier);
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            var editUrl = $('#edit-url').text();
-            $('#share-url').on('click', function() {
-                var tempInput = $('<input>');
-                $('body').append(tempInput);
-                tempInput.val(editUrl).select();
-                document.execCommand('copy');
-                tempInput.remove();
-                $('#share-url').attr('title', 'Copied!').tooltip('show');
-                setTimeout(function() {
-                    $('#share-url').attr('title', 'Click to copy').tooltip('hide');
-                }, 1000);
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-=======
-        document.getElementById('update-identifier-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var newIdentifier = document.getElementById('new-identifier-input').value.trim();
-            if (newIdentifier && newIdentifier !== currentIdentifier) {
-                updateIdentifier(currentIdentifier, newIdentifier);
-            } else {
-                console.error('Invalid input or same identifier.');
-            }
-        });
-
-        document.querySelector('.change-url').addEventListener('click', function() {
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
-            var popover = document.getElementById('popover-content');
-            popover.style.display = (popover.style.display === 'block' ? 'none' : 'block');
-        });
-
-        document.querySelector('.add-password').addEventListener('click', function() {
-            if (this.textContent === 'Add password') {
-                var newPassword = prompt('Enter password:');
-                if (newPassword !== null) {
-                    fetch('connect.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                action: 'add_password',
-                                identifier: currentIdentifier,
-                                passwords: newPassword
-                            })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log('Add Password Response:', data);
-                            if (data.success) {
-                                alert('Password added successfully!');
-                                checkPasswordStatus(currentIdentifier);
-                            } else {
-                                console.error('Error:', data.message);
-                                alert('Failed to add password: ' + data.message);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            alert('An error occurred while adding password.');
-                        });
-                }
-            } else if (this.textContent === 'Remove password') {
-                var confirmation = confirm('Are you sure you want to remove the password?');
-                if (confirmation) {
-                    fetch('connect.php', {
+                } else if (this.textContent === 'Remove password') {
+                    var confirmation = confirm('Are you sure you want to remove the password?');
+                    if (confirmation) {
+                        fetch('connect.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -663,90 +255,50 @@ mysqli_close($conn);
                                 identifier: currentIdentifier
                             })
                         })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log('Remove Password Response:', data);
-                            if (data.success) {
-                                alert('Password removed successfully!');
-                                checkPasswordStatus(currentIdentifier);
-                            } else {
-                                console.error('Error:', data.message);
-                                alert('Failed to remove password: ' + data.message);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            alert('An error occurred while removing password.');
-                        });
-                }
-            }
-        });
-
-        function checkPasswordStatus(identifier) {
-            fetch('connect.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        action: 'load',
-                        identifier: identifier
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Load Password Status Response:', data);
-                    if (data.success) {
-                        if (data.passwords) {
-                            document.querySelector('.add-password').textContent = 'Remove password';
-                        } else {
-                            document.querySelector('.add-password').textContent = 'Add password';
-                        }
-                    } else {
-                        console.error('Error:', data.message);
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Remove Password Response:', data);
+                                if (data.success) {
+                                    alert('Password removed successfully!');
+                                    checkPasswordStatus(currentIdentifier);
+                                } else {
+                                    console.error('Error:', data.message);
+                                    alert('Failed to remove password: ' + data.message);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('An error occurred while removing password.');
+                            });
                     }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+                }
+            });
+
+            var shareButton = document.getElementById('share-url');
+            var shareTooltip = new bootstrap.Tooltip(shareButton);
+            shareButton.addEventListener('click', function () {
+                var editUrl = document.getElementById('edit-url').textContent;
+                var copy = navigator.clipboard && navigator.clipboard.writeText
+                    ? navigator.clipboard.writeText(editUrl)
+                    : Promise.reject(new Error('Clipboard API unavailable'));
+
+                copy.catch(function () {
+                    var tempInput = document.createElement('input');
+                    document.body.appendChild(tempInput);
+                    tempInput.value = editUrl;
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                }).finally(function () {
+                    shareButton.setAttribute('data-bs-original-title', 'Copied!');
+                    shareTooltip.show();
+                    setTimeout(function () {
+                        shareTooltip.hide();
+                        shareButton.setAttribute('data-bs-original-title', 'Click to copy');
+                    }, 1000);
                 });
-        }
-
-        checkPasswordStatus(currentIdentifier);
-
-    });
-    </script>
-    <script>
-    $(document).ready(function() {
-        var editUrl = $('#edit-url').text();
-        $('#share-url').on('click', function() {
-            var tempInput = $('<input>');
-            $('body').append(tempInput);
-            tempInput.val(editUrl).select();
-            document.execCommand('copy');
-            tempInput.remove();
-            $('#share-url').attr('title', 'Copied!').tooltip('show');
-            setTimeout(function() {
-                $('#share-url').attr('title', 'Click to copy').tooltip('hide');
-            }, 1000);
+            });
         });
-    });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var popover = document.getElementById('popover-content');
-        var button = document.getElementById('change-url-button');
-        button.addEventListener('click', function() {
-            popover.style.display = 'block';
-            var buttonRect = button.getBoundingClientRect();
-            popover.style.top = (buttonRect.bottom + window.scrollY) + 'px';
-            popover.style.left = buttonRect.left + 'px';
-        });
-        document.addEventListener('click', function(event) {
-            if (!popover.contains(event.target) && event.target !== button) {
-                popover.style.display = 'none';
-            }
-        });
-    });
     </script>
 
 </head>
@@ -757,14 +309,9 @@ mysqli_close($conn);
         <h3>RIONOTES</h3>
         <div class="content">
             <div>
-<<<<<<< HEAD
-                <a href="http://rionotes.com/" target="_blank" class="new-note btn btn-primary">New note</a>
-                <button class="share-url btn btn-primary ms-2" id="share-url" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy">Copy url</button>
-=======
-                <a href="https://dev.canbds.com/notepad/" target="_blank" class="new-note btn btn-primary">New note</a>
+                <a href="/" target="_blank" class="new-note btn btn-primary">New note</a>
                 <button class="share-url btn btn-primary ms-2" id="share-url" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Copy">Copy url</button>
->>>>>>> aa88fa17d3fd90dbbcbc1a78dcb2d885f0f7c24a
+                    data-bs-placement="top" title="Click to copy">Copy url</button>
                 <div hidden>
                     <strong>Edit url:</strong>
                     <span id="edit-url">https://example.com/edit/12345</span>
@@ -786,17 +333,18 @@ mysqli_close($conn);
                     <button type="button" id="change-url-button" class="change-url btn btn-warning">Change Url</button>
                 </form>
                 <?php if ($row && !empty($row['passwords'])) : ?>
-                <div class="add-password btn btn-warning ms-2">Remove password</div>
+                    <div class="add-password btn btn-warning ms-2">Remove password</div>
                 <?php else : ?>
-                <div class="add-password btn btn-warning ms-2">Add password</div>
+                    <div class="add-password btn btn-warning ms-2">Add password</div>
                 <?php endif; ?>
             </div>
         </div>
+
+        <footer class="footer-container">
+            &copy; <?php echo date('Y'); ?> Rio Notes &mdash; quick, shareable notes.
+        </footer>
     </div>
 
 </body>
-<footer class="footer-container">
-
-</footer>
 
 </html>
