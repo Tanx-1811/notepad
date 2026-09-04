@@ -138,6 +138,18 @@ textarea:focus {
     font-size: 13px;
 }
 
+.note-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: var(--footer-text);
+    font-size: 12px;
+}
+
+.theme-toggle {
+    line-height: 1;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 10px;
@@ -166,11 +178,19 @@ textarea:focus {
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
         --bg: #1a1a1a;
         --surface: #242424;
         --text: #eee;
         --border: #444;
         --footer-text: #999;
     }
+}
+
+:root[data-theme="dark"] {
+    --bg: #1a1a1a;
+    --surface: #242424;
+    --text: #eee;
+    --border: #444;
+    --footer-text: #999;
 }
