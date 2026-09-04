@@ -114,6 +114,8 @@ mysqli_close($conn);
                         console.log('Load Content Response:', data);
                         if (data.success) {
                             document.getElementById('contents').value = data.content;
+                            updateStats();
+                            document.getElementById('last-saved').textContent = data.created_at ? 'Last saved ' + formatTimestamp(data.created_at) : '';
                         } else {
                             console.error('Error:', data.message);
                         }
@@ -121,6 +123,21 @@ mysqli_close($conn);
                     .catch((error) => {
                         console.error('Error:', error);
                     });
+            }
+
+            function formatTimestamp(value) {
+                if (!value) {
+                    return '';
+                }
+                var date = new Date(value.replace(' ', 'T'));
+                return isNaN(date.getTime()) ? '' : date.toLocaleString();
+            }
+
+            function updateStats() {
+                var text = document.getElementById('contents').value;
+                var trimmed = text.trim();
+                var words = trimmed === '' ? 0 : trimmed.split(/\s+/).length;
+                document.getElementById('note-stats').textContent = text.length + ' characters, ' + words + ' words';
             }
 
             function checkPasswordStatus(identifier) {
@@ -177,7 +194,9 @@ mysqli_close($conn);
                     .then(data => {
                         console.log('Server Response:', data);
                         showStatusIcon(!!data.success);
-                        if (!data.success) {
+                        if (data.success) {
+                            document.getElementById('last-saved').textContent = 'Last saved ' + new Date().toLocaleString();
+                        } else {
                             console.error('Error:', data.message);
                         }
                     })
@@ -186,6 +205,8 @@ mysqli_close($conn);
                         showStatusIcon(false);
                     });
             });
+
+            textarea.addEventListener('input', updateStats);
 
             document.getElementById('update-identifier-form').addEventListener('submit', function (event) {
                 event.preventDefault();
@@ -298,6 +319,23 @@ mysqli_close($conn);
                     }, 1000);
                 });
             });
+
+            try {
+                var themeToggle = document.getElementById('theme-toggle');
+                var applyTheme = function (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+                };
+                var storedTheme = localStorage.getItem('theme');
+                applyTheme(storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+                themeToggle.addEventListener('click', function () {
+                    var nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    applyTheme(nextTheme);
+                    localStorage.setItem('theme', nextTheme);
+                });
+            } catch (error) {
+                console.error('Theme toggle unavailable:', error);
+            }
         });
     </script>
 
@@ -312,6 +350,8 @@ mysqli_close($conn);
                 <a href="/" target="_blank" class="new-note btn btn-primary">New note</a>
                 <button class="share-url btn btn-primary ms-2" id="share-url" data-bs-toggle="tooltip"
                     data-bs-placement="top" title="Click to copy">Copy url</button>
+                <button type="button" class="theme-toggle btn btn-outline-secondary ms-2" id="theme-toggle"
+                    title="Toggle theme">🌙</button>
                 <div hidden>
                     <strong>Edit url:</strong>
                     <span id="edit-url">https://example.com/edit/12345</span>
@@ -322,6 +362,10 @@ mysqli_close($conn);
             <div class="text-main">
                 <textarea id="contents" class="form-control" rows="15" spellcheck="false"></textarea>
                 <span id="status-icon" class="status-icon"></span>
+            </div>
+            <div class="note-meta">
+                <span id="note-stats">0 characters, 0 words</span>
+                <span id="last-saved"></span>
             </div>
             <div style="display: flex;">
                 <form id="update-identifier-form">
