@@ -32,7 +32,7 @@ if (isset($data['action'])) {
         mysqli_stmt_close($stmt);
 
         if ($row) {
-            echo json_encode(array("success" => true, "content" => html_entity_decode($row['content']), "created_at" => $row['created_at'], "time_create" => $row['time_create'], "passwords" => $row['passwords']));
+            echo json_encode(array("success" => true, "content" => html_entity_decode($row['content']), "created_at" => $row['created_at'], "time_create" => $row['time_create'], "has_password" => !empty($row['passwords'])));
         } else {
             echo json_encode(array("success" => false, "message" => "No content found for the given identifier."));
         }
@@ -81,7 +81,7 @@ if (isset($data['action'])) {
             exit;
         }
 
-        $hashed_password = md5($passwords); // Use password_hash() for better security
+        $hashed_password = password_hash($passwords, PASSWORD_DEFAULT);
 
         if (identifierExists($conn, $identifier)) {
             $stmt = mysqli_prepare($conn, "UPDATE notes SET passwords = ?, created_at = ? WHERE identifier = ?");
