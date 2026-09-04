@@ -362,7 +362,7 @@ mysqli_close($conn);
             </div>
 
             <div class="text-main">
-                <textarea id="contents" class="form-control" rows="15" spellcheck="false"></textarea>
+                <textarea id="contents" class="form-control" rows="15" spellcheck="false" maxlength="200000"></textarea>
                 <span id="status-icon" class="status-icon"></span>
             </div>
             <div class="note-meta">

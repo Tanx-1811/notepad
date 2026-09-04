@@ -51,6 +51,12 @@ if (isset($data['action'])) {
             exit;
         }
 
+        $max_content_length = 200000;
+        if (mb_strlen($content) > $max_content_length) {
+            echo json_encode(array("success" => false, "message" => "Content exceeds the maximum length of $max_content_length characters."));
+            exit;
+        }
+
         if ($currentIdentifier === '') {
             echo json_encode(array("success" => false, "message" => "Current identifier is empty. Cannot update."));
             exit;
