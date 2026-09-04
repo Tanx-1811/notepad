@@ -3,39 +3,53 @@ session_start();
 
 include "config.php";
 
+$max_login_attempts = 5;
+$lockout_seconds = 300;
+
+if (!isset($_SESSION['login_attempts']) || (time() - $_SESSION['login_attempts_at']) > $lockout_seconds) {
+    $_SESSION['login_attempts'] = 0;
+    $_SESSION['login_attempts_at'] = time();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $identifier = $_SESSION['identifier'];
-    $password_input = $_POST['password'];
-
-    $stmt = mysqli_prepare($conn, "SELECT passwords FROM notes WHERE identifier = ?");
-    mysqli_stmt_bind_param($stmt, "s", $identifier);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $row = mysqli_fetch_assoc($result);
-    mysqli_stmt_close($stmt);
-
-    $authenticated = false;
-    if ($row && !empty($row['passwords'])) {
-        if (password_verify($password_input, $row['passwords'])) {
-            $authenticated = true;
-        } elseif (preg_match('/^[a-f0-9]{32}$/', $row['passwords']) && md5($password_input) === $row['passwords']) {
-            // Legacy md5 hash from before the password_hash() upgrade: verify against it once,
-            // then transparently re-hash with password_hash() so future logins use bcrypt.
-            $authenticated = true;
-            $upgraded_hash = password_hash($password_input, PASSWORD_DEFAULT);
-            $update_stmt = mysqli_prepare($conn, "UPDATE notes SET passwords = ? WHERE identifier = ?");
-            mysqli_stmt_bind_param($update_stmt, "ss", $upgraded_hash, $identifier);
-            mysqli_stmt_execute($update_stmt);
-            mysqli_stmt_close($update_stmt);
-        }
-    }
-
-    if ($authenticated) {
-        setcookie('authenticated', $identifier, time() + (86400 * 30), "/");
-        header("Location: https://rionotes.com/$identifier");
-        exit();
+    if ($_SESSION['login_attempts'] >= $max_login_attempts) {
+        $error = "Too many failed attempts. Please try again in a few minutes.";
     } else {
-        $error = "Incorrect password. Please try again.";
+        $identifier = $_SESSION['identifier'];
+        $password_input = $_POST['password'];
+
+        $stmt = mysqli_prepare($conn, "SELECT passwords FROM notes WHERE identifier = ?");
+        mysqli_stmt_bind_param($stmt, "s", $identifier);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+        mysqli_stmt_close($stmt);
+
+        $authenticated = false;
+        if ($row && !empty($row['passwords'])) {
+            if (password_verify($password_input, $row['passwords'])) {
+                $authenticated = true;
+            } elseif (preg_match('/^[a-f0-9]{32}$/', $row['passwords']) && md5($password_input) === $row['passwords']) {
+                // Legacy md5 hash from before the password_hash() upgrade: verify against it once,
+                // then transparently re-hash with password_hash() so future logins use bcrypt.
+                $authenticated = true;
+                $upgraded_hash = password_hash($password_input, PASSWORD_DEFAULT);
+                $update_stmt = mysqli_prepare($conn, "UPDATE notes SET passwords = ? WHERE identifier = ?");
+                mysqli_stmt_bind_param($update_stmt, "ss", $upgraded_hash, $identifier);
+                mysqli_stmt_execute($update_stmt);
+                mysqli_stmt_close($update_stmt);
+            }
+        }
+
+        if ($authenticated) {
+            unset($_SESSION['login_attempts'], $_SESSION['login_attempts_at']);
+            setcookie('authenticated', $identifier, time() + (86400 * 30), "/");
+            header("Location: https://rionotes.com/$identifier");
+            exit();
+        } else {
+            $_SESSION['login_attempts']++;
+            $error = "Incorrect password. Please try again.";
+        }
     }
 }
 
