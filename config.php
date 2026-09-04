@@ -17,6 +17,10 @@ function loadEnvFile($path)
     }
 }
 
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: SAMEORIGIN');
+header('Referrer-Policy: strict-origin-when-cross-origin');
+
 loadEnvFile(__DIR__ . '/.env');
 
 $servername = getenv('DB_HOST') ?: 'localhost';
